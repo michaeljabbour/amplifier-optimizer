@@ -1,5 +1,7 @@
 """Basic import and instantiation tests for observability modules."""
 
+from __future__ import annotations
+
 import sys
 from pathlib import Path
 
@@ -7,8 +9,9 @@ from pathlib import Path
 modules_dir = Path(__file__).parent.parent / "modules"
 sys.path.insert(0, str(modules_dir))
 
-from observability_hook import ObservabilityHook
-from trajectory_analyzer import TrajectoryAnalyzer
+# Imports after path modification (intentional for testing)
+from observability_hook import ObservabilityHook  # noqa: E402
+from trajectory_analyzer import TrajectoryAnalyzer  # noqa: E402
 
 
 def test_observability_hook_instantiation():

@@ -43,7 +43,7 @@ Built following Amplifier's philosophy: **mechanisms, not policies**. This bundl
 amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@main
 
 # Activate it
-amplifier bundle use observability
+amplifier bundle use optimizer
 
 # Start a session - tracking is now active!
 amplifier
@@ -57,7 +57,7 @@ That's it! All your sessions now have mission control visibility.
 # Run a quick test to verify the bundle works
 amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@main
 cd ~/.amplifier/cache/amplifier-optimizer-*/
-python modules/observability/tests/test_basic_import.py
+python tests/test_basic_import.py
 ```
 
 ### Local Development
@@ -68,10 +68,10 @@ git clone https://github.com/michaeljabbour/amplifier-optimizer.git
 cd amplifier-optimizer
 
 # Test the modules
-python modules/observability/tests/test_basic_import.py
+python tests/test_basic_import.py
 
 # Use locally (bypasses bundle registry)
-amplifier --bundle modules/observability
+amplifier --bundle ./bundle.md
 ```
 
 ---
@@ -343,19 +343,16 @@ Expected output:
 
 ```
 amplifier-optimizer/
-└── modules/
-    └── observability/
-        ├── bundle.yaml                           # Bundle composition
-        ├── modules/
-        │   ├── __init__.py                       # Module exports
-        │   ├── observability_hook.py             # Cost/speed/token tracking
-        │   └── trajectory_analyzer.py            # Phase detection
-        ├── context/
-        │   └── observability-instructions.md     # Agent guidance
-        ├── tests/
-        │   └── test_basic_import.py              # Basic tests
-        ├── README.md                             # Full documentation
-        └── QUICKSTART.md                         # 5-minute setup guide
+├── bundle.md                              # Root bundle definition
+├── modules/
+│   ├── observability_hook.py              # Cost/speed/token tracking
+│   └── trajectory_analyzer.py             # Phase detection
+├── context/
+│   └── observability-instructions.md      # Agent guidance
+├── tests/
+│   └── test_basic_import.py               # Basic tests
+├── README.md                              # This file
+└── LICENSE                                # MIT License
 ```
 
 **Total code**: ~500 lines across 2 modules  
