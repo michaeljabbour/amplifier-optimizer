@@ -40,7 +40,7 @@ Built following Amplifier's philosophy: **mechanisms, not policies**. This bundl
 
 ```bash
 # Add the bundle from GitHub
-amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@master
+amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@main
 
 # Activate it
 amplifier bundle use observability
@@ -55,8 +55,8 @@ That's it! All your sessions now have mission control visibility.
 
 ```bash
 # Run a quick test to verify the bundle works
-amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@master
-cd ~/.amplifier/cache/amplifier-bundle-amplifier-optimizer-*/
+amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@main
+cd ~/.amplifier/cache/amplifier-optimizer-*/
 python modules/observability/tests/test_basic_import.py
 ```
 
