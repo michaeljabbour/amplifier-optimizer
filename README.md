@@ -39,20 +39,28 @@ Built following Amplifier's philosophy: **mechanisms, not policies**. This bundl
 ### Installation
 
 ```bash
-# Copy to your Amplifier bundles directory
-cp -r modules/observability ~/.amplifier/bundles/
-```
+# Add the bundle from GitHub
+amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@master
 
-### Usage
-
-Add to your Amplifier configuration:
-
-```yaml
-bundles:
-  - path: observability
+# Activate it
+amplifier bundle use observability
 ```
 
 That's it! Start any Amplifier session and you'll see live tracking.
+
+### Alternative: Local Development
+
+```bash
+# Clone for local testing
+git clone https://github.com/michaeljabbour/amplifier-optimizer.git
+cd amplifier-optimizer
+
+# Test the modules
+python modules/observability/tests/test_basic_import.py
+
+# Use locally
+amplifier --bundle modules/observability
+```
 
 ---
 
