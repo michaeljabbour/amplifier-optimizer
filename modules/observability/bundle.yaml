@@ -1,0 +1,47 @@
+bundle:
+  name: observability
+  version: "1.0.0"
+  description: "Real-time cost, speed, and trajectory tracking for Amplifier sessions"
+  authors:
+    - "Amplifier Team"
+
+modules:
+  hooks:
+    - name: observability
+      type: hook
+      source: "modules/observability_hook.py:ObservabilityHook"
+      config:
+        model: "claude-sonnet-4-5"
+        cost_threshold: 1.0
+        speed_threshold: 10.0
+        inject_frequency: 5
+      events:
+        - "session:start"
+        - "tool:pre"
+        - "tool:post"
+        - "provider:post"
+        - "session:end"
+      description: "Tracks API costs, token usage, and tool timing with ephemeral awareness injection"
+        
+    - name: trajectory
+      type: hook
+      source: "modules/trajectory_analyzer.py:TrajectoryAnalyzer"
+      config:
+        window_size: 10
+        inject_frequency: 3
+      events:
+        - "tool:post"
+        - "provider:post"
+      description: "Detects workflow phase and predicts trajectory with mission control visibility"
+
+context:
+  - path: context/observability-instructions.md
+    description: "Explains observability metrics and trajectory awareness to agents"
+
+behaviors:
+  - "Injects ephemeral cost/speed awareness every 5 turns"
+  - "Injects ephemeral trajectory awareness every 3 turns"
+  - "Warns on cost thresholds and slow tools"
+  - "Detects workflow phase automatically (exploration, implementation, etc.)"
+  - "Predicts trajectory path based on tool patterns"
+  - "Provides final summary on session end"
