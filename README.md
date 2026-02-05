@@ -44,21 +44,33 @@ amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@m
 
 # Activate it
 amplifier bundle use observability
+
+# Start a session - tracking is now active!
+amplifier
 ```
 
-That's it! Start any Amplifier session and you'll see live tracking.
+That's it! All your sessions now have mission control visibility.
 
-### Alternative: Local Development
+### Testing First?
 
 ```bash
-# Clone for local testing
+# Run a quick test to verify the bundle works
+amplifier bundle add git+https://github.com/michaeljabbour/amplifier-optimizer@master
+cd ~/.amplifier/cache/amplifier-bundle-amplifier-optimizer-*/
+python modules/observability/tests/test_basic_import.py
+```
+
+### Local Development
+
+```bash
+# Clone for local development
 git clone https://github.com/michaeljabbour/amplifier-optimizer.git
 cd amplifier-optimizer
 
 # Test the modules
 python modules/observability/tests/test_basic_import.py
 
-# Use locally
+# Use locally (bypasses bundle registry)
 amplifier --bundle modules/observability
 ```
 
