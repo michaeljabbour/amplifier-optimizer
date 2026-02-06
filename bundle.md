@@ -6,6 +6,9 @@ bundle:
   authors:
     - "Amplifier Team"
 
+includes:
+  - bundle: foundation
+
 hooks:
   - module: hooks-observability
     source: optimizer:modules/observability_hook.py:ObservabilityHook
